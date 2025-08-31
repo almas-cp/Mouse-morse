@@ -1,52 +1,96 @@
-# Mouse to Morse Code Converter
+# 🖱️ Mouse to Morse Code Converter
+
+[![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)]()
+
+> Transform your mouse clicks into Morse code and watch it magically appear as text! 🎯
 
 A Python application that converts middle mouse button clicks into Morse code and automatically types the decoded text into any active text field.
 
-## Features
+## ✨ Features
 
-- **Real-time Morse Code Input**: Use middle mouse button clicks to input Morse code
-- **Automatic Text Output**: Decoded text appears directly in any active text field
-- **Visual Feedback**: Console displays dots, dashes, and decoded characters in real-time
-- **Smart Timing**: Distinguishes between dots (short clicks) and dashes (long clicks)
-- **Word Spacing**: Automatically adds spaces between words based on timing gaps
+- 🖱️ **Real-time Morse Code Input**: Use middle mouse button clicks to input Morse code
+- ⌨️ **Automatic Text Output**: Decoded text appears directly in any active text field
+- 👀 **Visual Feedback**: Console displays dots, dashes, and decoded characters in real-time
+- ⏱️ **Smart Timing**: Distinguishes between dots (short clicks) and dashes (long clicks)
+- 📝 **Word Spacing**: Automatically adds spaces between words based on timing gaps
+- 🌐 **Cross-platform**: Works on Windows, macOS, and Linux
 
-## How It Works
+## 🔧 How It Works
 
-- **Short middle mouse clicks** (< 0.3 seconds) = **Dots (.)**
-- **Long middle mouse clicks** (≥ 0.3 seconds) = **Dashes (-)**
-- **Character gaps**: 1 second pause converts accumulated Morse to a character
-- **Word gaps**: 2.5 second pause adds a space between words
+| Action | Result | Timing |
+|--------|--------|--------|
+| 🖱️ **Short click** | Dot (.) | < 0.3 seconds |
+| 🖱️ **Long click** | Dash (-) | ≥ 0.3 seconds |
+| ⏸️ **Short pause** | Convert to character | 1 second |
+| ⏸️ **Long pause** | Add word space | 2.5 seconds |
 
-## Installation
+## 🚀 Quick Start
 
-1. Install the required dependency:
+### Prerequisites
+- Python 3.6 or higher
+- Administrator/root privileges (for global mouse listening)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/mouse-to-morse.git
+   cd mouse-to-morse
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install pynput
+   ```
+
+3. **Run the application**
+   ```bash
+   python script.py
+   ```
+
+### Alternative: One-line install
 ```bash
-pip install pynput
+pip install pynput && python script.py
 ```
 
-2. Run the script:
-```bash
-python script.py
+## 📖 Usage
+
+1. **Start the application**
+   ```bash
+   python script.py
+   ```
+
+2. **Position your cursor** in any text field (browser, notepad, etc.)
+
+3. **Input Morse code** using middle mouse button:
+   - 🔘 **Quick clicks** → dots (.)
+   - 🔘 **Long clicks** → dashes (-)
+
+4. **Watch the magic** ✨ as your Morse code converts to text automatically
+
+5. **Exit** with `Ctrl+C`
+
+### 🎬 Demo
+```
+Input:  . - .     (short-long-short clicks)
+Output: R
+
+Input:  ... --- ...     (SOS)
+Output: SOS
 ```
 
-## Usage
-
-1. Start the application by running the script
-2. Click in any text field where you want the decoded text to appear
-3. Use middle mouse button clicks to input Morse code:
-   - Quick clicks for dots
-   - Hold longer for dashes
-4. Watch as your Morse code gets automatically converted to text
-5. Press `Ctrl+C` to exit
-
-## Supported Characters
+## 📚 Supported Characters
 
 The converter supports the full international Morse code alphabet:
+- 🔤 **Letters**: A-Z (26 characters)
+- 🔢 **Numbers**: 0-9 (10 digits)
 
-- **Letters**: A-Z
-- **Numbers**: 0-9
+<details>
+<summary>📋 <strong>Click to view Morse Code Reference</strong></summary>
 
-### Morse Code Reference
+### Letters & Numbers
 
 | Letter | Code | Letter | Code | Number | Code |
 |--------|------|--------|------|--------|------|
@@ -64,33 +108,87 @@ The converter supports the full international Morse code alphabet:
 | L | .-.. | Y | -.-- |   |       |
 | M | --   | Z | --.. |   |       |
 
-## Configuration
+</details>
 
-You can modify timing settings in the script:
+## ⚙️ Configuration
+
+Customize timing settings by editing these values in `script.py`:
 
 ```python
+# Timing configuration (in seconds)
 self.dot_dash_threshold = 0.3  # Short vs long click threshold
-self.character_gap = 1.0       # Gap between characters
+self.character_gap = 1.0       # Gap between characters  
 self.word_gap = 2.5            # Gap between words
 ```
 
-## Requirements
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `dot_dash_threshold` | 0.3s | Click duration to distinguish dots from dashes |
+| `character_gap` | 1.0s | Pause before converting Morse to character |
+| `word_gap` | 2.5s | Pause before adding word space |
 
-- Python 3.6+
-- `pynput` library
-- Administrator/root privileges may be required for global mouse listening
+## 📋 Requirements
 
-## Troubleshooting
+| Component | Version | Purpose |
+|-----------|---------|---------|
+| 🐍 Python | 3.6+ | Runtime environment |
+| 📦 pynput | Latest | Mouse/keyboard input handling |
+| 🔐 Admin rights | - | Global mouse event capture |
 
-- **Permission errors**: Run as administrator (Windows) or with sudo (Linux/Mac)
-- **Text not appearing**: Make sure you've clicked in an active text field
-- **Import errors**: Install pynput with `pip install pynput`
+## 🔧 Troubleshooting
 
-## Example
+<details>
+<summary><strong>Common Issues & Solutions</strong></summary>
 
-Input sequence: Short click, long click, short click (. - .)
-Output: "R"
+| Problem | Solution |
+|---------|----------|
+| 🚫 **Permission errors** | Run as administrator (Windows) or with `sudo` (Linux/Mac) |
+| 📝 **Text not appearing** | Ensure you've clicked in an active text field first |
+| 📦 **Import errors** | Install pynput: `pip install pynput` |
+| 🖱️ **Mouse not detected** | Check if middle mouse button is working in other apps |
+| ⏱️ **Timing issues** | Adjust timing values in configuration section |
 
-## License
+### Platform-specific notes:
+- **Windows**: May require "Run as Administrator"
+- **macOS**: Grant accessibility permissions in System Preferences
+- **Linux**: May need `sudo` or add user to input group
 
-This project is open source and available under standard terms.
+</details>
+
+## 🎯 Examples
+
+### Basic Usage
+```
+Mouse Input: [short] [long] [short]
+Morse Code:  .       -      .
+Output:      R
+```
+
+### Complete Word
+```
+Mouse Input: [short-short-short] [pause] [long-long-long] [pause] [short-short-short]
+Morse Code:  ...                         ---                     ...
+Output:      SOS
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to:
+- 🐛 Report bugs
+- 💡 Suggest features  
+- 🔧 Submit pull requests
+- 📖 Improve documentation
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## ⭐ Show Your Support
+
+If you found this project helpful, please consider giving it a star! ⭐
+
+---
+
+<div align="center">
+  <strong>Happy Morse coding! 📡</strong>
+</div>
